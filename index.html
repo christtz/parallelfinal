@@ -11,7 +11,7 @@
   </head>
   <body>
     <section class="page-header">
-      <h1 class="project-name">A Simple CUDA Renderer</h1>
+      <h1 class="project-name">ParaStore: Parallel Key-Value Store</h1>
       <h2 class="project-tagline">Aryeh Alexander and Christtia Zheng</h2>
       <a href="https://github.com/christtz/parallelfinal" class="btn">View on GitHub</a>
       <a href="https://github.com/christtz/parallelfinal/zipball/master" class="btn">Download .zip</a>
@@ -22,27 +22,29 @@
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Summary</h3>
 
-<p>We will make a blah blah. </p>
+<p>We will implement a high-performance parallel hash table using a lock-free skip list. We'll be working with x86 and may later deploy onto AWS or latedays.</p>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h3>
 
-<p>blah</p>
+<p>A lock-free skip list is a neat alternative to a binary search tree. They can be used in ordered map effectively and seems to work well for a distributed data structure. We will be able to achieve parallelism more efficiently with a lock-free skip list.</p>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Challenge</h3>
 
-<p>blah</p>
+<p>This problem is challenging because lock-free data structures are tricky to implement. For a lock-free skip list, there are different levels of skipping which adds another layer of computation. A lot of things can go wrong, especially with different scenarios of concurrency. We hope to learn how to implement a lock-free data structure, and to get practice debugging concurrent issues.</p>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Resources</h3>
 
-<p>blah</p>
+<p>We will compile locally on an x86 system, given the fact that we have the compare_and_swap primitives. We have a sequential starter code, a lot of research which has been done on lock-free skip lists, and access to open-source implementation in the Java API (if we so desire). Ideally, we will start from stratch and work from there. One helpful paper we found is <a href="http://www.cse.yorku.ca/~ruppert/papers/lfll.pdf"> here. </a> </p>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Goals and Deliverables</h3>
 
-<p>blah</p>
+<p>Plan to Achieve:</p>
+<p>Hope to Achieve:</p>
+
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Platform Choice</h3>
@@ -53,7 +55,7 @@
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Schedule</h3>
 
 <p>4/15 (Friday): Project Checkpoint 1 due </p>
-<p>5/9: Project presentation + Final writeup </p>
+<p>5/9 (Monday): Project presentation + Final writeup </p>
 
 <h3>
 <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
