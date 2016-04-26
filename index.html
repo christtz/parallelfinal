@@ -22,12 +22,12 @@
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Summary</h3>
 
-<p>We will implement a high-performance parallel hash table using a lock-free skip list. We'll be working with x86 and may later deploy onto AWS or latedays.</p>
+<p>We will implement a high-performance parallel hash table using lock-free linked lists. We'll be working with x86 and may later deploy onto AWS or latedays.</p>
 
 <h3>
 <a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h3>
 
-<p>A lock-free skip list is a neat alternative to a binary search tree. They can be used in ordered map effectively and seems to work well for a distributed data structure. We will be able to achieve parallelism more efficiently with a lock-free skip list. Below is an example of a lock-free skip list. </p>
+<p>A hash tables is useful for constant look-up, insertion, deletions, etc. </p>
 <img src="picture.png" alt="Lock-free Skip list" style="width:550px;height:228px;">
 
 <h3>
