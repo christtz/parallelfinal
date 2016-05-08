@@ -33,15 +33,16 @@
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Approach</h3>
 
-<p>Our linked list is implemented such that there is a head node to identify entry into the list and a tail node to identify the end of the list. 
-<br>
-<br>
+<p>Our linked list is implemented such that there is a head node to identify entry into the list and a tail node to identify the end of the list. </p>
+<p>
 (i) coarse-grain <br>
 Our coarse-grain linked list was implemented with a mutex that was obtained before beginning an operation and released after.
-<hr>
+</p>
+<p>
 (ii) fine-grain <br>
 Our fine-grain linked list was implemented with hand-over-hand locking, where each list node included its own spinlock. 
-<hr>
+</p>
+<p>
 (iii) lock-free <br>
 We followed Harris’ paper to implement a non-blocking linked-list, which guarantees system-wide progress. This means that even if some threads stop completely, the other threads will continue and maintain progress of the task. 
 </p>
