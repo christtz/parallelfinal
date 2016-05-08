@@ -65,6 +65,8 @@ We wrote a python script that renders various trace files that test different us
 
 <p>To test for correctness of our implementations, we compared the results obtained from various trace files on our fine-grain, coarse-grain, and lock-free lists using multiple threads against the results obtained from our sequential list. The behavior of multiple threads is undefined, which is to say that inserting Node x before removing Node x would give different results than vice versa. To account for this, we created trace files where each group of n operations (where n is the number of threads) would never include inserting and removing the same node if a node of the same value didn’t already exist in the list. We used barriers to do this. Our requirement for correctness was just that a resulting linked list has the same nodes in the same order as the sequential linked list.</p>
 
+<p>To test for performance, we tried to come up with as many types of test cases as possible. </p>
+
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
 
