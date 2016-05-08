@@ -34,7 +34,18 @@
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Approach</h3>
 
 <p>Our linked list is implemented such that there is a head node to identify entry into the list and a tail node to identify the end of the list. </p>
-
+<p>
+(i) coarse-grain <br>
+Our coarse-grain linked list was implemented with a mutex that was obtained before beginning an operation and released after.
+</p>
+<p>
+(ii) fine-grain <br>
+Our fine-grain linked list was implemented with hand-over-hand locking, where each list node included its own spinlock. 
+</p>
+<p>
+(iii) lock-free <br>
+We followed Harris’ paper to implement a non-blocking linked-list, which guarantees system-wide progress. This means that even if some threads stop completely, the other threads will continue and maintain progress of the task. 
+</p>
 
 <img src="1.png" alt="Insertion" style="width:550px;height:228px;">
 
@@ -48,7 +59,9 @@
 <p>Now, if Node 2 is being inserted while Node 1 is in the process of being deleted, Node 2 will see that Node 1 is logically deleted and physically delete Node 1 before inserting itself. Deletion was more troublesome to implement than insertion and we had a segfault in our code, which turned out to be because of a bad memory access. Marked fields give us addresses that don’t make sense, so it’s important to be careful with getting the correct unmarked form. </p>
 <p>Harris’ paper has a proof of correctness so we just assumed the algorithm we used is correct. Harris’ algorithm, however, doesn’t solve the “ABA problem.” </p>
 <p>We examined David Stolp’s “Common Pitfalls in Writing Lock-Free Algorithms,” which showed that a lock-free implementation of a stack with sleeps both increased throughput and decreased processor utilization. We wanted to try including sleeps in our lock-free linked list, but we didn’t have time. </p>
-
+<p>
+(iii) test suite <br>
+We wrote a python script that renders various trace files that test different use cases with defined behavior. For example, we test our linked lists on a large number of consecutive insertions, random insertions, alternating between a large block of insertions followed by a large block of deletions, and alternating between inserting at the beginning and end of the list. Each trace file was run on our three linked lists, as well as a basic sequential linked list. Performance time is measured using CycleTimer.h, where the total time is the sum of the time it takes to complete each operation. </p>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
@@ -58,12 +71,17 @@
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>References</h3>
 
-<p>hi</p>
+<p>http://www.contrib.andrew.cmu.edu/~sgbowen/15418/writeup.pdf	<br>
+https://timharris.uk/papers/2001-disc.pdf <br>
+http://www.cs.rochester.edu/~scott/papers/1996_PODC_queues.pdf <br>
+http://blog.memsql.com/common-pitfalls-in-writing-lock-free-algorithms/ <br>
+http://www.drdobbs.com/lock-free-data-structures/184401865 <br>
+</p>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>List of Work</h3>
 
-<p>hi</p>
+<p>We each divided the work equally.</p>
 
 
 <p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
