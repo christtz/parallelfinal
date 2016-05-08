@@ -23,17 +23,27 @@
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Summary</h3>
 
-<p>hi</p>
+<p>We implemented three variations of linked lists: lock-free, fine-grained, coarse-grained. We also checked for correctness of these three implementations against a sequential linked list without locks. We found, after various tests, that our lock-free implementation had better performance than our fine-grained or coarse-grained linked lists.</p>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Background</h3>
 
-<p>hi</p>
+<p>Lock-free data structures allow multiple threads to concurrently access shared data without using synchronization primitives like mutexes. This is especially impressive because correct lock-free code prevents deadlock from occurring. Lock-free data structures also fix problems that might otherwise occur with locks such as page faults, or preemption while a thread is in a critical section (creating deadlock.) However, it is very difficult to write correct lock-free code. Our lock-free linked list is based on the non-blocking implementation described in Harris’ paper and supports inserting, removing, and finding a node. The correctness of Harris’ lock-free algorithm is ensured by linearizability, meaning that operations appear to occur atomically. In order words, the invocation of each operation is followed immediately by its response (Harris).</p>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Approach</h3>
 
-<p>hi</p>
+<p>Our linked list is implemented such that there is a head node to identify entry into the list and a tail node to identify the end of the list. 
+
+(i) coarse-grain
+Our coarse-grain linked list was implemented with a mutex that was obtained before beginning an operation and released after.
+
+(ii) fine-grain
+Our fine-grain linked list was implemented with hand-over-hand locking, where each list node included its own spinlock. 
+
+(iii) lock-free
+We followed Harris’ paper to implement a non-blocking linked-list, which guarantees system-wide progress. This means that even if some threads stop completely, the other threads will continue and maintain progress of the task. 
+</p>
 
 <h3>
 <a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Results</h3>
